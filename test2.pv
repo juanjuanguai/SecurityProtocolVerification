@@ -1,0 +1,67 @@
+free c:channel.
+free pc:channel[private].
+
+type pkey.
+type spkey.
+type skey.
+type sskey.
+type bistring.
+
+fun pk(skey):pkey.
+fun aenc(bitstring,pkey):bitstring.
+reduc forall x:bitstring,y:skey; adec(aenc(x,pk(y)),y)=x.
+fun spk(sskey):spkey.
+fun sign(bitstring,sskey):bitstring.
+reduc forall x:bitstring,y:sskey; getsign(sign(x,y)) =x.
+reduc forall x:bitstring,y:sskey; checksign(sign(x,y),spk(y))=x.
+fun senc(bitstring,bitstring):bitstring.
+reduc forall x:bitstring,y:bitstring; sdec(senc(x,y),y) =x.
+
+event beginBparam(pkey).
+event endAparam(pkey).
+event beginAparam(pkey).
+event endBparam(pkey).
+
+query x:pkey; inj-event(endBparam(x))==> inj-event(beginBparam(x)).
+query x:pkey; inj-event(endAparam(x))==> inj-event(beginAparam(x)).
+
+free secretANA,secretBNB,secretANB,secretBNA:bitstring [private].
+query attacker(secretANA);
+      attacker(secretBNB);
+      attacker(secretANB);
+      attacker(secretBNA).
+
+let processA(pkB:pkey,skA:skey) =
+in(c,pkX:pkey);
+event beginBparam(pkX);
+new NA:bitstring;
+out(c,aenc((NA,pk(skA)),pkX));
+in(c,m0:bitstring);
+let (=NA,NX:bitstring) =adec(m0,skA) in
+out(c,aenc(NX,pkX));
+if pkX=pkB  then 
+event endAparam(pk(skA));
+out(c,senc(secretANA,NA));
+out(c,senc(secretANB,NX));
+0.
+
+let processB(pkA:pkey,skB:skey) =
+in(c,m0:bitstring);
+let (NY:bitstring,pkY:pkey) =adec(m0,skB) in
+event beginAparam(pkY);
+new NB:bitstring;
+out(c,aenc((NY,NB),pkY));
+in(c,m1:bitstring);
+if NB=adec(m1,skB) then
+if pkY=pkA  then 
+event endBparam(pk(skB));
+out(c,senc(secretBNB,NB));
+out(c,senc(secretBNA,NY));
+0.
+
+process 
+new skA:skey;let pkA=pk(skA)in
+new skB:skey;let pkB=pk(skB)in
+out (c,pkB);
+out (c,pkA);
+((!processA(pkB,skA))|(!processB(pkA,skB)))

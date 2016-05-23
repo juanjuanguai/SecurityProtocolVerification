@@ -1,0 +1,47 @@
+free c:channel.
+free pc:channel[private].
+
+type pkey.
+type spkey.
+type skey.
+type sskey.
+type bistring.
+type key.
+
+fun pk(skey):pkey.
+fun aenc(bitstring,pkey):bitstring.
+reduc forall x:bitstring,y:skey; adec(aenc(x,pk(y)),y)=x.
+fun spk(sskey):spkey.
+fun sign(bitstring,sskey):bitstring.
+reduc forall x:bitstring,y:sskey; getsign(sign(x,y)) =x.
+reduc forall x:bitstring,y:sskey; checksign(sign(x,y),spk(y))=x.
+fun senc(bitstring,key):bitstring.
+reduc forall x:bitstring,y:key; sdec(senc(x,y),y) =x.
+
+
+
+free s:bitstring[private].
+query attacker(s).
+
+let processA(pkA:pkey,skA:skey,pkB:spkey) =
+out(c,pkA);
+in(c,m0:bitstring);
+let m1=adec(m0,skA) in
+let (=pkB,k:key) =checksign(m1,pkB) in
+out(c,senc(s,k));
+0.
+
+let processB(pkB:spkey,skB:sskey) =
+in(c,pkA:pkey);
+new k:key;
+out(c,aenc(sign((pkB,k),skB),pkA));
+in(c,m0:bitstring);
+if s=sdec(m0,k) then
+0.
+
+process 
+new skA:skey;let pkA=pk(skA)in
+new skB:sskey;let pkB=spk(skB)in
+out (c,pkB);
+out (c,pkA);
+((!processA(pkA,skA,pkB))|(!processB(pkB,skB)))

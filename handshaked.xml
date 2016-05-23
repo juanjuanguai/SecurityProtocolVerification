@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_kkgsMBeLEd60N8ipLbB6nA" name="handshake">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_zR8zcDrmEeOV1e-W1SIKlg" name="A:ProtocolInitiator"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_zSJnwDrmEeOV1e-W1SIKlg" name="B:ProtocolResponser"/>
+  <packagedElement xmi:type="uml:Constraint" xmi:id="_zSXDIDrmEeOV1e-W1SIKlg" name="pkA" constrainedElement="_zR8zcDrmEeOV1e-W1SIKlg">
+    <ownedComment xmi:id="_zSjQYDrmEeOV1e-W1SIKlg">
+      <body>pkey</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Constraint" xmi:id="_zSkegDrmEeOV1e-W1SIKlg" name="pkB" constrainedElement="_zR8zcDrmEeOV1e-W1SIKlg">
+    <ownedComment xmi:id="_zSpXADrmEeOV1e-W1SIKlg">
+      <body>spkey</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Constraint" xmi:id="_zSqlIDrmEeOV1e-W1SIKlg" name="skB" constrainedElement="_zR8zcDrmEeOV1e-W1SIKlg">
+    <ownedComment xmi:id="_zSuPgDrmEeOV1e-W1SIKlg">
+      <body>sskey</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Constraint" xmi:id="_zSwEsDrmEeOV1e-W1SIKlg" name="s" constrainedElement="_zR8zcDrmEeOV1e-W1SIKlg">
+    <ownedComment xmi:id="_zS0WIDrmEeOV1e-W1SIKlg">
+      <body>bitstring</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Constraint" xmi:id="_zS1kQDrmEeOV1e-W1SIKlg" name="k" constrainedElement="_zR8zcDrmEeOV1e-W1SIKlg">
+    <ownedComment xmi:id="_zS6cwDrmEeOV1e-W1SIKlg">
+      <body>key</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zXI1cDrmEeOV1e-W1SIKlg" name="Cryptographic">
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zajV0DrmEeOV1e-W1SIKlg" name="Cryptographic"/>
+    <ownedOperation xmi:id="_zYEpkDrmEeOV1e-W1SIKlg" name="pk" visibility="public" bodyCondition="_zYMlYDrmEeOV1e-W1SIKlg">
+      <ownedRule xmi:id="_zYMlYDrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zYNMcDrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zYbO4DrmEeOV1e-W1SIKlg" name="Skey" type="_zYgucDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zYijoDrmEeOV1e-W1SIKlg" name="pk" type="_zYjxwDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zYlm8DrmEeOV1e-W1SIKlg" name="aenc" visibility="public" bodyCondition="_zYp4YDrmEeOV1e-W1SIKlg">
+      <ownedRule xmi:id="_zYp4YDrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zYqfcDrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zYuw4DrmEeOV1e-W1SIKlg" name="Array[]" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zY03gDrmEeOV1e-W1SIKlg" name="Pkey" type="_zYjxwDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zY5I8DrmEeOV1e-W1SIKlg" name="aenc" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zY7lMDrmEeOV1e-W1SIKlg" name="adec" visibility="public" bodyCondition="_zY_2oDrmEeOV1e-W1SIKlg">
+      <ownedComment xmi:id="_zZJnoDrmEeOV1e-W1SIKlg">
+        <body>stereotype=aenc</body>
+      </ownedComment>
+      <ownedRule xmi:id="_zY_2oDrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zZAdsDrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zZDhADrmEeOV1e-W1SIKlg" name="y" type="_zYgucDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zZHycDrmEeOV1e-W1SIKlg" name="adec" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zZK1wDrmEeOV1e-W1SIKlg" name="spk" visibility="public" bodyCondition="_zZPHMDrmEeOV1e-W1SIKlg">
+      <ownedRule xmi:id="_zZPHMDrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zZPuQDrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zZSxkDrmEeOV1e-W1SIKlg" name="Sskey" type="_zZXDADrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zZYRIDrmEeOV1e-W1SIKlg" name="spk" type="_zZY4MDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zZatYDrmEeOV1e-W1SIKlg" name="sign" visibility="public" bodyCondition="_zZe-0DrmEeOV1e-W1SIKlg">
+      <ownedRule xmi:id="_zZe-0DrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zZfl4DrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zZjQQDrmEeOV1e-W1SIKlg" name="msg" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zZmTkDrmEeOV1e-W1SIKlg" name="Sskey" type="_zZXDADrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zZoIwDrmEeOV1e-W1SIKlg" name="sign" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zZp98DrmEeOV1e-W1SIKlg" name="getsign" visibility="public" bodyCondition="_zZu2cDrmEeOV1e-W1SIKlg">
+      <ownedComment xmi:id="_zZ0WADrmEeOV1e-W1SIKlg">
+        <body>stereotype=sign</body>
+      </ownedComment>
+      <ownedRule xmi:id="_zZu2cDrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zZvdgDrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zZx5wDrmEeOV1e-W1SIKlg" name="getsign" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zZ09EDrmEeOV1e-W1SIKlg" name="checksign" visibility="public" bodyCondition="_zZ5OgDrmEeOV1e-W1SIKlg">
+      <ownedComment xmi:id="_zaBxYDrmEeOV1e-W1SIKlg">
+        <body>stereotype=sign</body>
+      </ownedComment>
+      <ownedRule xmi:id="_zZ5OgDrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zZ51kDrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zZ8R0DrmEeOV1e-W1SIKlg" name="spkeyK" type="_zZY4MDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zaAjQDrmEeOV1e-W1SIKlg" name="checksign" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zaC_gDrmEeOV1e-W1SIKlg" name="senc" visibility="public" bodyCondition="_zaGp4DrmEeOV1e-W1SIKlg">
+      <ownedRule xmi:id="_zaGp4DrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zaHQ8DrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zaKUQDrmEeOV1e-W1SIKlg" name="Bitstring" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zaOlsDrmEeOV1e-W1SIKlg" name="Key" type="_zaSQEDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zaTeMDrmEeOV1e-W1SIKlg" name="senc" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zaVTYDrmEeOV1e-W1SIKlg" name="sdec" visibility="public" bodyCondition="_zaZk0DrmEeOV1e-W1SIKlg">
+      <ownedComment xmi:id="_zafrcDrmEeOV1e-W1SIKlg">
+        <body>stereotype=senc</body>
+      </ownedComment>
+      <ownedRule xmi:id="_zaZk0DrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zaaL4DrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zacBEDrmEeOV1e-W1SIKlg" name="Bitstring" type="_zaSQEDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zad2QDrmEeOV1e-W1SIKlg" name="sdec" type="_zYzpYDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zYgucDrmEeOV1e-W1SIKlg" name="skey"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zYjxwDrmEeOV1e-W1SIKlg" name="pkey"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zYzpYDrmEeOV1e-W1SIKlg" name="bitstring"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zZXDADrmEeOV1e-W1SIKlg" name="sskey"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zZY4MDrmEeOV1e-W1SIKlg" name="spkey"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zaSQEDrmEeOV1e-W1SIKlg" name="key"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zalLADrmEeOV1e-W1SIKlg" name="pkey">
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zaymYDrmEeOV1e-W1SIKlg" name="Type"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zaz0gDrmEeOV1e-W1SIKlg" name="spkey">
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_za_asDrmEeOV1e-W1SIKlg" name="Type"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zbAo0DrmEeOV1e-W1SIKlg" name="skey">
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zbMPADrmEeOV1e-W1SIKlg" name="Type"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zbM2EDrmEeOV1e-W1SIKlg" name="sskey">
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zbaRcDrmEeOV1e-W1SIKlg" name="Type"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zbbfkDrmEeOV1e-W1SIKlg" name="channel">
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zbnFwDrmEeOV1e-W1SIKlg" name="Type"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zboT4DrmEeOV1e-W1SIKlg" name="bistring">
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zb1IMDrmEeOV1e-W1SIKlg" name="Type"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zb2WUDrmEeOV1e-W1SIKlg" name="Channel">
+    <ownedAttribute xmi:id="_zb9rEDrmEeOV1e-W1SIKlg" name="c" visibility="public" type="_zcB8gDrmEeOV1e-W1SIKlg"/>
+    <ownedAttribute xmi:id="_zcGN8DrmEeOV1e-W1SIKlg" name="pc" visibility="private" type="_zcB8gDrmEeOV1e-W1SIKlg"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zcSbMDrmEeOV1e-W1SIKlg" name="Channel"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zcB8gDrmEeOV1e-W1SIKlg" name="channel"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zcTpUDrmEeOV1e-W1SIKlg" name="ProtocolInitiator">
+    <ownedAttribute xmi:id="_zccMMDrmEeOV1e-W1SIKlg" name="A" visibility="private" type="_zcdaUDrmEeOV1e-W1SIKlg"/>
+    <ownedAttribute xmi:id="_zchrwDrmEeOV1e-W1SIKlg" name="B" visibility="private" type="_zci54DrmEeOV1e-W1SIKlg"/>
+    <ownedAttribute xmi:id="_zcnLUDrmEeOV1e-W1SIKlg" name="pkA" visibility="public" type="_zalLADrmEeOV1e-W1SIKlg"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zdLMADrmEeOV1e-W1SIKlg" name="Participator"/>
+    <ownedOperation xmi:id="_zcw8UDrmEeOV1e-W1SIKlg" name="ProtocolInitiator" visibility="public" bodyCondition="_zc1NwDrmEeOV1e-W1SIKlg">
+      <ownedRule xmi:id="_zc1NwDrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zc100DrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zc6GQDrmEeOV1e-W1SIKlg" name="pkA" type="_zalLADrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zc-XsDrmEeOV1e-W1SIKlg" name="skA" type="_zbAo0DrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zdCpIDrmEeOV1e-W1SIKlg" name="pkB" type="_zaz0gDrmEeOV1e-W1SIKlg" direction="inout"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zcdaUDrmEeOV1e-W1SIKlg" name="Self"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zci54DrmEeOV1e-W1SIKlg" name="Intend"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zdMaIDrmEeOV1e-W1SIKlg" name="ProtocolResponser">
+    <ownedAttribute xmi:id="_zdUV8DrmEeOV1e-W1SIKlg" name="B" visibility="private" type="_zcdaUDrmEeOV1e-W1SIKlg"/>
+    <ownedAttribute xmi:id="_zdWyMDrmEeOV1e-W1SIKlg" name="A" visibility="private" type="_zci54DrmEeOV1e-W1SIKlg"/>
+    <ownedAttribute xmi:id="_zdZOcDrmEeOV1e-W1SIKlg" name="k" visibility="private" type="_zaSQEDrmEeOV1e-W1SIKlg"/>
+    <ownedAttribute xmi:id="_zddf4DrmEeOV1e-W1SIKlg" name="pkB" visibility="public" type="_zaz0gDrmEeOV1e-W1SIKlg"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zd6y4DrmEeOV1e-W1SIKlg" name="Participator"/>
+    <ownedOperation xmi:id="_zdn38DrmEeOV1e-W1SIKlg" name="ProtocolResponser" visibility="public" bodyCondition="_zdriUDrmEeOV1e-W1SIKlg">
+      <ownedRule xmi:id="_zdriUDrmEeOV1e-W1SIKlg">
+        <specification xmi:type="uml:LiteralString" xmi:id="_zdsJYDrmEeOV1e-W1SIKlg" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_zdvzwDrmEeOV1e-W1SIKlg" name="pkB" type="_zaz0gDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zdxo8DrmEeOV1e-W1SIKlg" name="skB" type="_zbM2EDrmEeOV1e-W1SIKlg" direction="inout"/>
+      <ownedParameter xmi:id="_zd16YDrmEeOV1e-W1SIKlg" name="ProtocolResponser" type="_zd2hcDrmEeOV1e-W1SIKlg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zd2hcDrmEeOV1e-W1SIKlg" name="xsd:string"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zd8BADrmEeOV1e-W1SIKlg" name="Confidentiality">
+    <ownedAttribute xmi:id="_zeCusDrmEeOV1e-W1SIKlg" name="s" visibility="private" type="_zYzpYDrmEeOV1e-W1SIKlg"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zeOU4DrmEeOV1e-W1SIKlg" name="Confidentiality"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zePjADrmEeOV1e-W1SIKlg" name="key">
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_zebwQDrmEeOV1e-W1SIKlg" name="Type"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_ze0KwDrmEeOV1e-W1SIKlg" name="协议交互时序图">
+    <ownedAttribute xmi:id="_zh5T8DrmEeOV1e-W1SIKlg" name="" type="_ze0KwDrmEeOV1e-W1SIKlg"/>
+    <ownedAttribute xmi:id="_ziH9cDrmEeOV1e-W1SIKlg" name="" type="_zR8zcDrmEeOV1e-W1SIKlg"/>
+    <ownedAttribute xmi:id="_ziM18DrmEeOV1e-W1SIKlg" name="" type="_zSJnwDrmEeOV1e-W1SIKlg"/>
+    <lifeline xmi:id="_zh23sDrmEeOV1e-W1SIKlg" name="协议交互时序图" represents="_zh5T8DrmEeOV1e-W1SIKlg"/>
+    <lifeline xmi:id="_ziGIQDrmEeOV1e-W1SIKlg" name="A:ProtocolInitiator" represents="_ziH9cDrmEeOV1e-W1SIKlg" coveredBy="_zilQcDrmEeOV1e-W1SIKlg _zi29QDrmEeOV1e-W1SIKlg _zi_gIDrmEeOV1e-W1SIKlg"/>
+    <lifeline xmi:id="_ziLAwDrmEeOV1e-W1SIKlg" name="B:ProtocolResponser" represents="_ziM18DrmEeOV1e-W1SIKlg" coveredBy="_ziph4DrmEeOV1e-W1SIKlg _ziz58DrmEeOV1e-W1SIKlg _zjB8YDrmEeOV1e-W1SIKlg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zilQcDrmEeOV1e-W1SIKlg" name="3:{s}k_src" covered="_ziGIQDrmEeOV1e-W1SIKlg" message="_zifw4DrmEeOV1e-W1SIKlg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ziph4DrmEeOV1e-W1SIKlg" name="3:{s}k_dst" covered="_ziLAwDrmEeOV1e-W1SIKlg" message="_zifw4DrmEeOV1e-W1SIKlg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ziz58DrmEeOV1e-W1SIKlg" name="2:{{pkB,k}skB}pkA_src" covered="_ziLAwDrmEeOV1e-W1SIKlg" message="_zivogDrmEeOV1e-W1SIKlg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zi29QDrmEeOV1e-W1SIKlg" name="2:{{pkB,k}skB}pkA_dst" covered="_ziGIQDrmEeOV1e-W1SIKlg" message="_zivogDrmEeOV1e-W1SIKlg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zi_gIDrmEeOV1e-W1SIKlg" name="1:pkA_src" covered="_ziGIQDrmEeOV1e-W1SIKlg" message="_zi6noDrmEeOV1e-W1SIKlg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zjB8YDrmEeOV1e-W1SIKlg" name="1:pkA_dst" covered="_ziLAwDrmEeOV1e-W1SIKlg" message="_zi6noDrmEeOV1e-W1SIKlg"/>
+    <message xmi:id="_zifw4DrmEeOV1e-W1SIKlg" name="3:{s}k" messageSort="createMessage" receiveEvent="_ziph4DrmEeOV1e-W1SIKlg" sendEvent="_zilQcDrmEeOV1e-W1SIKlg"/>
+    <message xmi:id="_zivogDrmEeOV1e-W1SIKlg" name="2:{{pkB,k}skB}pkA" messageSort="reply" receiveEvent="_zi29QDrmEeOV1e-W1SIKlg" sendEvent="_ziz58DrmEeOV1e-W1SIKlg"/>
+    <message xmi:id="_zi6noDrmEeOV1e-W1SIKlg" name="1:pkA" messageSort="createMessage" receiveEvent="_zjB8YDrmEeOV1e-W1SIKlg" sendEvent="_zi_gIDrmEeOV1e-W1SIKlg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_zjXTkDrmEeOV1e-W1SIKlg" name="systemType"/>
+</uml:Model>
